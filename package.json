@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/lexm/express-socket-chatroom/issues"
   },
-  "homepage": "https://github.com/lexm/express-socket-chatroom#readme"
+  "homepage": "https://github.com/lexm/express-socket-chatroom#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "path": "^0.12.7",
+    "socket.io": "^2.0.4"
+  }
 }

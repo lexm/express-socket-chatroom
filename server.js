@@ -16,7 +16,14 @@ const io = require('socket.io').listen(server);
 
 io.on('connection', function(socket) {
     console.log('connected! socket # ', socket.id);
-    socket.on('new_user', function(username) {
-        console.log(username);
+    let udata = {
+        "sockid": socket.id
+    }
+    socket.on('add_user', function(username) {
+        udata.username = username
+        socket.broadcast.emit('new_user', udata);
+    });
+    socket.on('disconnect', function() {
+        socket.broadcast.emit('remove_user', udata);
     })
 })

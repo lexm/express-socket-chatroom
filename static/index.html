@@ -10,7 +10,13 @@
         $(document).ready(function() {
             let name = prompt("Your name:");
             var socket = io().connect();
-            socket.emit('new_user', name);
+            socket.emit('add_user', name);
+            socket.on('new_user', function(udata) {
+                $("#space").append(`<section id="${udata.sockid}"><h2>${udata.username}</h2></section>`).fadeIn();
+            });
+            socket.on('remove_user', function (username) {
+                $(`#${udata.sockid}`).fadeOut().remove();
+            })
         })
     </script>
     <title>Group Chat</title>
